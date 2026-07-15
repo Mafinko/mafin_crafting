@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crafting</title>
+  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div id="overlay" class="hidden">
+    <div id="panel">
+      <aside id="sidebar">
+        <div id="brand">
+          <svg class="craft-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15.7 4.1l4.2 4.2-2 2-1.2-1.2-3.3 3.3-1.8-1.8 3.3-3.3-1.2-1.2 2-2z" />
+            <path d="M5.7 4.3l4.9 4.9-1.8 1.8L7.7 9.9 4.4 13.2l-2-2 3.3-3.3-1-1c-.3-.3-.3-.8 0-1.1l1-1c.3-.3.8-.3 1.1 0z" />
+            <path d="M12.4 13.1l2.5-2.5 5 5c.8.8.8 2 0 2.8l-1.5 1.5c-.8.8-2 .8-2.8 0l-5-5 1.8-1.8z" />
+            <path d="M8.1 12.7l3.2 3.2-3.6 3.6c-.8.8-2.1.8-2.9 0l-.3-.3c-.8-.8-.8-2.1 0-2.9l3.6-3.6z" />
+          </svg>
+          <span>Mafin <strong>CRAFTING</strong></span>
+        </div>
+
+        <div id="category-label">CATEGORIES</div>
+        <nav id="category-list" aria-label="Crafting categories">
+          <button class="category-item active" type="button" data-filter="all">
+            <i class="fas fa-house"></i>
+            <span>All Recipes</span>
+            <b id="count-all">0</b>
+          </button>
+          <button class="category-item" type="button" data-filter="available">
+            <i class="fas fa-circle-check"></i>
+            <span>Available</span>
+            <b id="count-available">0</b>
+          </button>
+          <button class="category-item" type="button" data-filter="locked">
+            <i class="fas fa-lock"></i>
+            <span>Locked</span>
+            <b id="count-locked">0</b>
+          </button>
+          <button class="category-item" type="button" data-filter="weapons">
+            <i class="fas fa-gun"></i>
+            <span>Weapons</span>
+            <b id="count-weapons">0</b>
+          </button>
+          <button class="category-item" type="button" data-filter="medical">
+            <i class="fas fa-kit-medical"></i>
+            <span>Medical</span>
+            <b id="count-medical">0</b>
+          </button>
+          <button class="category-item" type="button" data-filter="materials">
+            <i class="fas fa-cubes"></i>
+            <span>Materials</span>
+            <b id="count-materials">0</b>
+          </button>
+          <button class="category-item" type="button" data-filter="tools">
+            <i class="fas fa-wrench"></i>
+            <span>Tools</span>
+            <b id="count-tools">0</b>
+          </button>
+        </nav>
+      </aside>
+
+      <main id="main">
+        <header id="topbar">
+          <div id="section-title">
+            <svg class="craft-icon craft-icon-small" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.7 4.1l4.2 4.2-2 2-1.2-1.2-3.3 3.3-1.8-1.8 3.3-3.3-1.2-1.2 2-2z" />
+              <path d="M5.7 4.3l4.9 4.9-1.8 1.8L7.7 9.9 4.4 13.2l-2-2 3.3-3.3-1-1c-.3-.3-.3-.8 0-1.1l1-1c.3-.3.8-.3 1.1 0z" />
+              <path d="M12.4 13.1l2.5-2.5 5 5c.8.8.8 2 0 2.8l-1.5 1.5c-.8.8-2 .8-2.8 0l-5-5 1.8-1.8z" />
+              <path d="M8.1 12.7l3.2 3.2-3.6 3.6c-.8.8-2.1.8-2.9 0l-.3-.3c-.8-.8-.8-2.1 0-2.9l3.6-3.6z" />
+            </svg>
+            <span id="bench-label">CRAFTING</span>
+          </div>
+
+          <label id="search-wrap" for="search-input">
+            <i class="fas fa-magnifying-glass"></i>
+            <input id="search-input" type="text" autocomplete="off" placeholder="Search for a recipe..." />
+          </label>
+
+          <label id="sort-wrap" for="sort-select">
+            <select id="sort-select">
+              <option value="available">Available First</option>
+              <option value="name">Name: A to Z</option>
+              <option value="time">Craft Time: Low to High</option>
+              <option value="xp">XP: Low to High</option>
+            </select>
+            <i class="fas fa-chevron-down"></i>
+          </label>
+
+          <button id="close-btn" type="button" onclick="closeUI()" aria-label="Close">
+            X
+          </button>
+        </header>
+
+        <section id="stats-row">
+          <div class="stat-card">
+            <span>Available Recipes</span>
+            <strong id="stat-available">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Crafting Time</span>
+            <strong id="stat-time">--</strong>
+          </div>
+          <div class="stat-card">
+            <span>Crafting XP</span>
+            <strong id="stat-xp">0 XP</strong>
+          </div>
+        </section>
+
+        <div id="xp-section" class="hidden">
+          <div id="xp-meta">
+            <span id="xp-current">0 XP</span>
+            <span id="xp-next">Next tier</span>
+          </div>
+          <div id="xp-track">
+            <div id="xp-fill"></div>
+          </div>
+        </div>
+
+        <section id="recipe-section">
+          <div id="recipe-heading">
+            <div>
+              <i class="fas fa-star"></i>
+              <span id="recipe-section-title">CRAFTING RECIPES</span>
+            </div>
+            <small id="header-meta"><span id="header-meta-label">RECIPES</span> <span id="header-meta-value">0 / 0</span></small>
+          </div>
+
+          <div id="recipe-list">
+            <div id="recipe-list-inner"></div>
+            <div id="no-results" class="hidden">
+              <i class="fas fa-magnifying-glass"></i>
+              <p>No recipes found</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside id="detail">
+        <div id="detail-empty">
+          <i class="fas fa-hammer"></i>
+          <p id="detail-empty-label">Select recipe</p>
+        </div>
+
+        <div id="detail-content" class="hidden">
+          <div id="detail-header">
+            <div id="detail-icon-wrap">
+              <img id="detail-image" alt="" draggable="false" />
+            </div>
+            <div id="detail-header-text">
+              <div id="detail-brand">MAFIN</div>
+              <div id="detail-name"></div>
+              <div id="detail-desc"></div>
+            </div>
+          </div>
+
+          <div id="detail-xp-badge" class="xp-badge hidden"></div>
+          <div id="detail-xp-reward" class="xp-reward hidden"></div>
+
+          <div id="required-label" class="section-label">MATERIALS</div>
+          <div id="detail-required"></div>
+
+          <div id="result-label" class="section-label section-label-spaced">YOU GET</div>
+          <div id="detail-result"></div>
+
+          <div id="craft-area">
+            <button id="craft-btn" type="button" onclick="doCraft()">Craft</button>
+            <div id="progress-wrap" class="hidden">
+              <div id="progress-bar"></div>
+              <div id="progress-label">Crafting...</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="app.js?v=5"></script>
+</body>
+</html>

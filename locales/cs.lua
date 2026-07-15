@@ -1,0 +1,31 @@
+Config = Config or {}
+Config.Locales = Config.Locales or {}
+
+Config.Locales.cs = {
+    craft_success = 'Úspěšně jsi vyrobil: %s',
+    craft_failed = 'Výroba se nezdařila.',
+    missing_items = 'Nemáš dostatek surovin.',
+    no_job = 'Nemáš oprávnění používat tuto dílnu.',
+    crafting = 'Vyrábím...',
+    open_bench = 'Otevřít crafting',
+    required = 'Suroviny',
+    result = 'Získáš',
+    have = 'Máš',
+    craft_btn = 'Vyrobit',
+    close_btn = 'Zavřít',
+    not_removed = 'zachová se',
+    xp_gained = '+%.1f XP (celkem: %.1f XP)',
+    xp_required = 'Nemáš dostatek XP. Potřebuješ %.1f XP, máš %.1f XP.',
+    xp_label = 'Tvoje XP',
+    xp_next = 'Další tier: %s XP',
+    xp_max = 'Max tier',
+    xp_needed = 'Potřeba %s XP',
+    xp_locked = 'Vyžaduje %s XP · Máš %.1f XP',
+    xp_reward = '+%s XP za craft',
+    locked = 'Zamčeno',
+    available = 'Dostupné',
+    missing = 'Chybí suroviny',
+    select_recipe = 'Vyber recept',
+    recipes_meta = 'Recepty',
+    recipe_count = '%s / %s',
+}

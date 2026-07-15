@@ -1,0 +1,31 @@
+Config = Config or {}
+Config.Locales = Config.Locales or {}
+
+Config.Locales.en = {
+    craft_success = 'Successfully crafted: %s',
+    craft_failed = 'Crafting failed.',
+    missing_items = 'You do not have enough materials.',
+    no_job = 'You are not allowed to use this workbench.',
+    crafting = 'Crafting...',
+    open_bench = 'Open crafting',
+    required = 'Materials',
+    result = 'You get',
+    have = 'Have',
+    craft_btn = 'Craft',
+    close_btn = 'Close',
+    not_removed = 'kept',
+    xp_gained = '+%.1f XP (total: %.1f XP)',
+    xp_required = 'Not enough XP. You need %.1f XP, you have %.1f XP.',
+    xp_label = 'Your XP',
+    xp_next = 'Next tier: %s XP',
+    xp_max = 'Max tier',
+    xp_needed = 'Requires %s XP',
+    xp_locked = 'Requires %s XP · You have %.1f XP',
+    xp_reward = '+%s XP per craft',
+    locked = 'Locked',
+    available = 'Available',
+    missing = 'Missing materials',
+    select_recipe = 'Select recipe',
+    recipes_meta = 'Recipes',
+    recipe_count = '%s / %s',
+}
